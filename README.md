@@ -8,7 +8,7 @@ An Agentic AI Chatbot built using **LangChain, LangGraph, and OpenAI**. It can u
 - **Tool Calling:** Automatically selects and executes appropriate tools based on user queries.
 - **RAG (Retrieval-Augmented Generation):** Upload PDF, TXT, and CSV documents and ask questions based on their content.
 - **FAISS Vector Search:** Stores document embeddings locally and retrieves relevant information using semantic similarity search.
-- **Web Search:** Uses Tavily to retrieve information from the web.f
+- **Web Search:** Uses Tavily to retrieve information from the web.
 - **Calculator:** Performs mathematical calculations.
 - **Weather Information:** Retrieves current weather information using OPENWEATHER API.
 - **Stock Information:** Retrieves stock prices using  Alpha Vantage API.
@@ -17,7 +17,7 @@ An Agentic AI Chatbot built using **LangChain, LangGraph, and OpenAI**. It can u
 
 ## Deployment
 
-The application has been deployed using **Render** as separate frontend and backend services.
+The application has been deployed using **Render**.
 
 - Frontend: Streamlit
 - Hosting platform: Render
