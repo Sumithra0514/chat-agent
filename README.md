@@ -46,13 +46,12 @@ The application has been deployed using **Render** as separate frontend and back
 
 ## 🔧 Available Tools
 
-Tavily Search Tool - Searches the web for information 
-RAG Tool - Retrieves relevant content from uploaded documents 
-Calculator - Performs mathematical calculations 
-Weather Tool -  Retrieves current weather information 
-Stock Price Tool - Retrieves stock market prices 
-Task Planner  - Generates task plans and starts the human review workflow 
-
+- **Tavily Search Tool:** Searches the web for information.
+- **RAG Tool:** Retrieves relevant content from uploaded documents.
+- **Calculator:** Performs mathematical calculations.
+- **Weather Tool:** Retrieves current weather information.
+- **Stock Price Tool:** Retrieves stock market prices.
+- **Task Planner:** Generates task plans and starts the human review workflow.
 
 ## 🧠 Agentic Workflow
 
