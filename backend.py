@@ -218,7 +218,15 @@ def get_retriever(thread_id: str):
 
 @tool
 def rag_tool(query: str, config: RunnableConfig) -> str:
+    """
+    Retrieve relevant information from the PDF, TXT, and CSV uploaded in this conversation.
 
+    Use this tool when the user asks factual or conceptual questions
+    that may be answered using the uploaded PDF, TXT, and CSV.
+
+    Args:
+        query: The question or search query used to retrieve PDF, TXT, and CSV content.
+    """
     thread_id = config.get("configurable", {}).get("thread_id")
     retriever = get_retriever(thread_id) if thread_id else None
 
@@ -312,7 +320,11 @@ def _eval_node(node):
 
 @tool
 def calculator(expression: str) -> str:
-
+    """
+    Useful for simple math calculations.
+    Input should be a valid math expression.
+    Example: 2 + 2, math.sqrt(16), 10 * 5
+    """
     try:
         tree = ast.parse(expression.strip(), mode="eval")
         return str(_eval_node(tree.body))
@@ -322,9 +334,13 @@ def calculator(expression: str) -> str:
 
 @tool
 def get_stock_price(symbol: str) -> dict:
-
+    """
+    Fetch latest stock price for a given symbol (e.g. 'AAPL', 'TSLA')
+    using Alpha Vantage.
+    """
     api_key = os.getenv("ALPHAVANTAGE_API_KEY")
     if not api_key:
+        print("got api key")
         return {"error": "Set the ALPHAVANTAGE_API_KEY environment variable."}
 
     try:
@@ -341,7 +357,16 @@ def get_stock_price(symbol: str) -> dict:
 
 @tool
 def get_current_weather(location: str) -> str:
- 
+    """
+    Get the current real-time weather for a given city or location.
+
+    Args:
+        location: City or location name, for example:
+                  "Dhaka", "London, UK", or "New York, US".
+
+    Returns:
+        A formatted current weather report.
+    """
     api_key = os.getenv("OPENWEATHER_API_KEY")
     if not api_key:
         return (
