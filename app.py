@@ -255,9 +255,13 @@ submission = st.chat_input(
 
 if submission:
     user_input = submission.text
-
+    uploaded_file = (
+            submission.files[0]
+            if submission.files
+            else None
+        )
     if submission.files:
-        uploaded_file = submission.files[0]
+
         filename = uploaded_file.name
         extension = os.path.splitext(filename)[1].lower()
         temp_path = None
@@ -291,15 +295,23 @@ if submission:
         if not upload_success:
             st.stop()
 
-    if user_input:
+    if user_input or uploaded_file is not None:
+        file_name = uploaded_file.name if uploaded_file else None
+        display_text = (
+                    user_input
+                    if user_input
+                    else f"Please review the {file_name} file."
+                )
+
         st.session_state.message_history.append({
             "role": "user",
-            "content": user_input,
+            "content": display_text,
+            "file_name": file_name
         })
 
         with st.chat_message("user"):
-            st.markdown(user_input)
+            st.markdown(display_text)
         invoke_llm(
-            {"messages": [HumanMessage(content=user_input)]},
+            {"messages": [HumanMessage(content=display_text)]},
             thread_id,
         )
